@@ -18,11 +18,11 @@ You can define overrides at the ruleset, tag, and rule level for all Managed Rul
 
 When configuring the HTTP DDoS Attack Protection Managed Ruleset, use overrides to define a different **action** or **sensitivity level** from the default values. For more information on these rule parameters and the allowed values, see [Managed Ruleset override parameters](/ddos-protection/managed-rulesets/http/override-parameters/).
 
-To apply an override to all incoming requests for a zone, set the override `"expression"` to `"true"`.
-
 {{<Aside type="warning" header="Important">}}
 
-The HTTP DDoS Attack Protection Managed Ruleset is always enabled — you cannot disable its rules using an override with `"enabled": false`.
+* The HTTP DDoS Attack Protection Managed Ruleset is always enabled — you cannot disable its rules using an override with `"enabled": false`.
+
+* Customers with the Advanced DDoS Protection service can customize the override expression to apply it only to a subset of incoming requests. Other users must set the override `"expression"` to `"true"`, which means that the override will apply to all incoming requests for the zone.
 
 {{</Aside>}}
 
