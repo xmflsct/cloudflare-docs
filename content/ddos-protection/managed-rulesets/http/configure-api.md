@@ -22,7 +22,7 @@ When configuring the HTTP DDoS Attack Protection Managed Ruleset, use overrides 
 
 * The HTTP DDoS Attack Protection Managed Ruleset is always enabled — you cannot disable its rules using an override with `"enabled": false`.
 
-* Customers with the Advanced DDoS Protection service can customize the override expression to apply it only to a subset of incoming requests. Other users must set the override `"expression"` to `"true"`, which means that the override will apply to all incoming requests for the zone.
+* Customers with the Advanced DDoS Protection service can customize the override expression to apply it only to a subset of incoming requests. Other users must set the override `"expression"` to `"true"`, which means that the override will apply to all incoming requests for the zone. Since the Cloudflare dashboard does not currently support custom expressions, it may behave unexpectedly if you define custom override expressions using the API.
 
 {{</Aside>}}
 
