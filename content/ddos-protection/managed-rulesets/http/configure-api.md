@@ -26,7 +26,7 @@ The HTTP DDoS Attack Protection Managed Ruleset is always enabled — you cannot
 
 ## Example
 
-The following `PUT` example creates a new phase ruleset (or updates the existing one) for the `ddos_l7` phase at the zone level. The request includes several overrides to adjust the default behavior of the HTTP DDoS Attack Protection Managed Ruleset. These overrides are the following:
+The following `PUT` example creates a new phase ruleset (or updates the existing one) for the `ddos_l7` phase at the zone level. The request includes several overrides to adjust the default behavior of the HTTP DDoS Attack Protection Managed Ruleset, appplicable to all incoming requests addressed at `example.com`. These overrides are the following:
 
 * All rules of the Managed Ruleset will use the `managed_challenge` action and have a sensitivity level of `medium`.
 * All rules tagged with `<TAG_NAME>` will have a sensitivity level of `low`.
@@ -41,6 +41,7 @@ curl -X PUT \
   "rules": [
     {
       "action": "execute",
+      "expression": "http.host eq \"example.com\"",
       "action_parameters": {
         "id": "<MANAGED_RULESET_ID>",
         "overrides": {
@@ -59,8 +60,7 @@ curl -X PUT \
             }
           ]
         }
-      },
-      "expression": "true",
+      }
     }
   ]
 }'
@@ -101,7 +101,7 @@ The response returns the created (or updated) phase entry point ruleset.
             "sensitivity_level": "medium"
           }
         },
-        "expression": "true",
+        "expression": "http.host eq \"example.com\"",
         "last_updated": "2021-06-16T04:14:47.977741Z",
         "ref": "<RULE_REF>",
         "enabled": true
