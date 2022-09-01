@@ -27,7 +27,7 @@ To adjust rule behavior, do one of the following:
 *   [Configure Network-layer DDoS Attack Protection in the dashboard](/ddos-protection/managed-rulesets/network/configure-dashboard/).
 *   [Configure Network-layer DDoS Attack Protection Managed Ruleset overrides via API](/ddos-protection/managed-rulesets/network/configure-api/).
 
-You can only configure the behavior of the Managed Ruleset to set a stronger mitigation action or a lower sensitivity. Refer to [Managed Ruleset parameters](/ddos-protection/managed-rulesets/network/override-parameters/) for more information.
+You can only configure the behavior of the Managed Ruleset to set a stronger mitigation action or a lower sensitivity. Refer to [Ruleset parameters](/ddos-protection/managed-rulesets/network/override-parameters/) for more information.
 
 Overrides can apply to all packets or to a subset of incoming packets, depending on the override expression. Refer to [Available expression fields](/ddos-protection/managed-rulesets/network/fields/) for more information on the available fields for expressions of Network-layer DDoS Attack Protection Managed Ruleset overrides.
 

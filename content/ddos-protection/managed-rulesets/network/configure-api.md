@@ -16,7 +16,7 @@ Each account has the Network-layer DDoS Attack Protection Managed Ruleset enable
 
 You can define overrides at the ruleset, tag, and rule level for all Managed Rulesets.
 
-When configuring the Network-layer DDoS Attack Protection Managed Ruleset, use overrides to define a different **action** or **sensitivity** from the default values. For more information on these rule parameters and the allowed values, refer to [Managed Ruleset parameters](/ddos-protection/managed-rulesets/network/override-parameters/).
+When configuring the Network-layer DDoS Attack Protection Managed Ruleset, use overrides to define a different **action** or **sensitivity** from the default values. For more information on these rule parameters and the allowed values, refer to [Ruleset parameters](/ddos-protection/managed-rulesets/network/override-parameters/).
 
 {{<Aside type="warning" header="Important">}}
 
