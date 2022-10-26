@@ -13,9 +13,9 @@ The Workers platform currently only implements an identity transform stream, a t
 
 ## Constructor
 
-```js
+{{<code>}}
 let { readable, writable } = new TransformStream();
-```
+{{</code>}}
 
 {{<definitions>}}
 
