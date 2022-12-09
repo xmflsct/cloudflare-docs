@@ -324,7 +324,7 @@ export function toggleSidebar() {
 
 export function relativeLinkLoader() {
   document.body.addEventListener("click", function(event) {
-    if (event.target.tagName === "SPAN" && event.target.className === "DocsMarkdown--link-content") {
+    if (event.target.tagName === "SPAN" && (event.target.className === "DocsMarkdown--link-content" || event.target.className === "DocsSidebar--nav-link-text")) {
       if (history !== null) {
         let eventHref = event.path[1].getAttribute('href')
         if (eventHref.startsWith("/")) {
@@ -353,13 +353,13 @@ function loadPage(newUrl) {
     if (newDocument === null)
       return;
 
-    var newContent = httpRequest.responseXML.getElementById("main");
+    var newContent = httpRequest.responseXML.getElementById("DocsPage");
     if (newContent === null)
       return;
 
     document.title = newDocument.title;
 
-    var contentElement = document.getElementById("main");
+    var contentElement = document.getElementById("DocsPage");
     contentElement.replaceWith(newContent);
   }
 
