@@ -323,29 +323,19 @@ export function toggleSidebar() {
 }
 
 export function relativeLinkLoader() {
-  window.onload = function() {
-    // Make links load asynchronously
-    document.body.addEventListener("click", function(event) {
-      if (event.target.tagName !== "A")
-        return;
-  
-      // History API needed to make sure back and forward still work
-      if (history === null)
-        return;
-  
+  document.body.addEventListener("click", function(event) {
+    console.log(event.target.tagName)
+    if (event.target.tagName === "A" || event.target.tagName === "SPAN") {
       event.preventDefault();
-  
-      // External links should instead open in a new tab
-      var newUrl = event.target.href;
-      var domain = window.location.origin;
-      if (typeof domain !== "string" || newUrl.search(domain) !== 0) {
-        window.open(newUrl, "_blank");
-      } else {
-        loadPage(newUrl);
-        history.pushState(null /*stateObj*/, "" /*title*/, newUrl);
-      }
-    });
-  }
+      console.log(window.location.host)
+      console.log(event.path[1].href.host)
+      return;
+    }
+
+    // History API needed to make sure back and forward still work
+    if (history === null)
+      return;
+  })
 }
 
 function loadPage(newUrl) {
@@ -358,13 +348,13 @@ function loadPage(newUrl) {
     if (newDocument === null)
       return;
 
-    var newContent = httpRequest.responseXML.getElementById("mainContent");
+    var newContent = httpRequest.responseXML.getElementById("DocsPage");
     if (newContent === null)
       return;
 
     document.title = newDocument.title;
 
-    var contentElement = document.getElementById("mainContent");
+    var contentElement = document.getElementById("DocsPage");
     contentElement.replaceWith(newContent);
   }
 
