@@ -326,10 +326,17 @@ export function relativeLinkLoader() {
   document.body.addEventListener("click", function(event) {
     if (event.target.tagName === "SPAN" && event.target.className === "DocsMarkdown--link-content") {
       if (history !== null) {
-        if (event.path[1].getAttribute('href').startsWith("/")) {
-          event.preventDefault();
-          loadPage(event.path[1].href);
-          history.pushState(null /*stateObj*/, "" /*title*/, event.path[1].href);
+        let eventHref = event.path[1].getAttribute('href')
+        if (eventHref.startsWith("/")) {
+          const regexPattern = new RegExp('^\/(.*?)\/')
+          const eventMatch = eventHref.match(regexPattern)
+          const locationMatch = window.location.pathname.match(regexPattern)
+
+          if (eventMatch[1] === locationMatch[1]) {
+            event.preventDefault();
+            loadPage(event.path[1].href);
+            history.pushState(null /*stateObj*/, "" /*title*/, event.path[1].href);
+        }
         }
       }
     }
@@ -346,13 +353,13 @@ function loadPage(newUrl) {
     if (newDocument === null)
       return;
 
-    var newContent = httpRequest.responseXML.getElementById("DocsPage");
+    var newContent = httpRequest.responseXML.getElementById("main");
     if (newContent === null)
       return;
 
     document.title = newDocument.title;
 
-    var contentElement = document.getElementById("DocsPage");
+    var contentElement = document.getElementById("main");
     contentElement.replaceWith(newContent);
   }
 
