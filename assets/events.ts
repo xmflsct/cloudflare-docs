@@ -324,19 +324,17 @@ export function toggleSidebar() {
 
 export function relativeLinkLoader() {
   document.body.addEventListener("click", function(event) {
-    console.log(event.target.tagName)
-    if (event.target.tagName === "A" || event.target.tagName === "SPAN") {
-      event.preventDefault();
-      console.log(window.location.host)
-      console.log(event.path[1].href.host)
-      return;
+    if (event.target.tagName === "SPAN" && event.target.className === "DocsMarkdown--link-content") {
+      if (history !== null) {
+        if (event.path[1].getAttribute('href').startsWith("/")) {
+          event.preventDefault();
+          loadPage(event.path[1].href);
+          history.pushState(null /*stateObj*/, "" /*title*/, event.path[1].href);
+        }
+      }
     }
-
-    // History API needed to make sure back and forward still work
-    if (history === null)
-      return;
   })
-}
+};
 
 function loadPage(newUrl) {
   var httpRequest = new XMLHttpRequest();

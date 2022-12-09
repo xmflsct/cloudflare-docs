@@ -1,7 +1,7 @@
 {{ define "main" }}
   {{- $type := default "overview" .Params.type -}}
 
-  <div class="DocsPage">
+  <div class="DocsPage" id="DocsPage">
     {{- partial "skipcontent" . -}}
     {{- partial "topbar.mobile" . -}}
     {{- partial "sidebar.nav" . -}}
